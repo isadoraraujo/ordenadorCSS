@@ -1,6 +1,13 @@
-import express from "express"
+let ordenadorAZ = new Promise((res, rej) => {
+    res()
+    rej()
+})
 
-let propriedadesCSS = ['a', 'b', 'j', 'c']
-let propriedadesCSSOrdenadas = propriedadesCSS.sort()
-
-console.log(propriedadesCSSOrdenadas)
+ordenadorAZ.then(
+    (propriedadesCSS) => {
+        console.log(propriedadesCSS = ['font-size', 'text-align', 'backgroung-color'].sort())
+    },
+    (error) => {
+        console.log(error)
+    }
+)
