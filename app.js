@@ -4,19 +4,23 @@ const rl = readline.createInterface ({
     output: process.stdout
 })
 
-let ordenadorAZ = new Promise((res, rej) => {
-    res()
-    rej()
-})
+let question = () => {
+    return new Promise((resolve) => rl.question('', resolve))} 
 
-ordenadorAZ.then(
-    () => {
-        rl.question('Digite uma propriedade CSS e eu irei listar de A-Z: ', (propriedade) => {
-            let propriedadesOrdenadas = propriedade.split(' ').sort( )
-            console.log(propriedadesOrdenadas)
-        })
-    },
-    (error) => {
-        console.log(error)
+console.log('Digite propriedades CSS e eu irei listar em ordem alfabética')
+
+let propriedadesOrdenadas = []
+
+async function mainLoop() {
+    let propriedades = await question()
+
+    if(propriedades === 'sair') {
+        console.log(propriedadesOrdenadas.sort( ))
+        rl.close()
     }
-)
+
+    propriedadesOrdenadas.push(propriedades)
+    mainLoop()
+}
+
+mainLoop()
